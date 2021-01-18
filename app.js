@@ -63,7 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
             //adding the obstacle div to our grid div with dom
             grid.appendChild(obstacle)
             obstacle.style.left = obstaclePosition + 'px'
-        }
+
+
+
+            let obstacleTimeId = setInterval(function() {
+                    if(obstaclePosition === 0){
+                        clearInterval(obstacleTimeId)
+                        alert('GAME OVER!')
+                    }
+
+
+                obstaclePosition -= 10
+                obstacle.style.left = obstaclePosition + 'px'
+            },20) 
+        }//every 20ms
         Obstacles()
 
 })
