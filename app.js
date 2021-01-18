@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dino = document.querySelector('.dino') //getting the dino div by its class
     const grid = document.querySelector('.grid') //getting the grid div by its class
+    const alert = document.getElementById('alert') //getting the grid div by its class
     let isJumping = false
     let gravity = 0.9
+    let isGameOver = false
+
 
 
 
@@ -68,9 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             let obstacleTimeId = setInterval(function() {
-                    if(obstaclePosition === 0){
+                    if(obstaclePosition > 0 && obstaclePosition < 60 && position < 60){
                         clearInterval(obstacleTimeId)
-                        alert('GAME OVER!')
+                        alert.innerHTML = 'GAME OVER'
+                        isGameOver = true
                     }
 
 
@@ -78,7 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 obstacle.style.left = obstaclePosition + 'px'
                 
             },20) 
-            setTimeout(Obstacles, randomTimeInterval)
+            if(!isGameOver){
+                setTimeout(Obstacles, randomTimeInterval)
+            }
+            
         }//every 20ms
         Obstacles()
 
