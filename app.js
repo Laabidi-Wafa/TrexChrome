@@ -15,11 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function jump(){
             let position = 0
+
+           
             
-
-
-            //move up
             let timeId = setInterval(function () {
+
+                 //move down
+            if (position === 150) {
+                clearInterval(timeId)
+                console.log('down')
+                let downIntervalId = setInterval(function() {
+                    if(position === 0 ){
+                        clearInterval(downIntervalId)
+                    }
+                    position-=30
+                    dino.style.bottom = position + 'px'
+                },20)
+                
+            }
+
+
+
+//move up
                 console.log('up')
                 position+=30
                 dino.style.bottom = position + 'px'
