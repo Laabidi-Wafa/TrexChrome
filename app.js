@@ -1,10 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dino = document.querySelector('.dino') //the class dino
+    let isJumping = false
+
+
+
+
+
 
     function control(e){
         if (e.keyCode === 32) { //the spacebar  https://keycode.info/
         {
-            jump()
+            if (!isJumping) // isJumping is false
+            { //if the dino while pressing the spacebar isn't jumping make it jump
+                isJumping = true
+                jump()
+            }
+            
         }
        
     }
@@ -27,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let downIntervalId = setInterval(function() {
                     if(position === 0 ){
                         clearInterval(downIntervalId)
+                        isJumping = false //after clearing the interval isJumping returns to false so we can hit jump again 
                     }
                     position-=30
                     dino.style.bottom = position + 'px'
