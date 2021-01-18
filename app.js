@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //generating the obstacles
         function Obstacles(){
+            let randomTimeInterval  = Math.random() * 4000 //having a random number from 0 to 4000 ms at random
             let obstaclePosition = 1000
             const obstacle = document.createElement('div')
             obstacle.classList.add('obstacle')
@@ -75,7 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 obstaclePosition -= 10
                 obstacle.style.left = obstaclePosition + 'px'
+                
             },20) 
+            setTimeout(Obstacles, randomTimeInterval)
         }//every 20ms
         Obstacles()
 
