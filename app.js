@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const dino = document.querySelector('.dino') //the class dino
+    const dino = document.querySelector('.dino') //getting the dino div by its class
+    const grid = document.querySelector('.grid') //getting the grid div by its class
     let isJumping = false
     let gravity = 0.9
 
@@ -35,20 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         clearInterval(downIntervalId)
                         isJumping = false //after clearing the interval isJumping returns to false so we can hit jump again 
                     }
-                    position-=30
-                    count --
+                    position -= 5
+                    count--
                     position = position * gravity 
                     dino.style.bottom = position + 'px'
                 },20)
                 
             }
-
-
-
-//move up
+                //move up
                 console.log('up')
-                count ++
                 position+=30
+                count++
                 position = position * gravity 
                 dino.style.bottom = position + 'px'
                 console.log(dino.style.bottom)
@@ -56,5 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
             },20)
         }
 
+
+        //generating the obstacles
+        function Obstacles(){
+            let obstaclePosition = 1000
+            const obstacle = document.createElement('div')
+            obstacle.classList.add('obstacle')
+            //adding the obstacle div to our grid div with dom
+            grid.appendChild(obstacle)
+            obstacle.style.left = obstaclePosition + 'px'
+        }
+        Obstacles()
 
 })
