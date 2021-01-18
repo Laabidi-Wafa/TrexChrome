@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let timeId = setInterval(function () {
 
                  //move down
-            if (count === 150) {
+            if (count === 15) {
                 clearInterval(timeId)
                 console.log('down')
                 let downIntervalId = setInterval(function() {
@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let randomTimeInterval  = Math.random() * 4000 //having a random number from 0 to 4000 ms at random
             let obstaclePosition = 1000
             const obstacle = document.createElement('div')
-            obstacle.classList.add('obstacle')
+
+            if(!isGameOver) obstacle.classList.add('obstacle')
             //adding the obstacle div to our grid div with dom
             grid.appendChild(obstacle)
             obstacle.style.left = obstaclePosition + 'px'
@@ -75,6 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         clearInterval(obstacleTimeId)
                         alert.innerHTML = 'GAME OVER'
                         isGameOver = true
+                        //removing all children
+                        while (grid.firstChild){
+                            grid.removeChild(grid.lastChild) //removing the obstacles when they hit the position 0
+                        }
                     }
 
 
@@ -90,3 +95,4 @@ document.addEventListener('DOMContentLoaded', () => {
         Obstacles()
 
 })
+
